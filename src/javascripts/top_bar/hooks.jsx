@@ -32,7 +32,6 @@ export const useFetchPinnedTickets = (client, id, setTickets) => {
             return customField.map(field => ({...field, ticketId}))
           })
           .map(ticketFields => {
-            console.log('TopBar ticket **', ticketFields)
             return ticketFields.filter(field => {
               console.log('TopBar field', field)
               const {id, value} = field
@@ -43,16 +42,20 @@ export const useFetchPinnedTickets = (client, id, setTickets) => {
             (accumulator, currentValue) => accumulator.concat(currentValue),
             [],
           )
-
+        console.log('TopBar setTickets **', myPinnedTickets)
         setTickets(myPinnedTickets)
       }
     }
 
     if (id) {
       fetchTicketList().then()
+      console.log('TopBar ** client on is called')
       client.on('pane.activated', fetchTicketList)
     }
 
-    return () => client.off('pane.activated', fetchTicketList)
+    return () => {
+      console.log('TopBar ** client off is called')
+      client.off('pane.activated', fetchTicketList)
+    }
   }, [id])
 }
