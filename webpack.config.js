@@ -1,44 +1,44 @@
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
-const path = require("path");
+const path = require('path')
 
 module.exports = {
   entry: {
     ticket_sidebar: [
       'babel-polyfill',
-      path.resolve("src/javascripts/ticket_sidebar/index.js")
+      path.resolve('src/javascripts/ticket_sidebar/index.js'),
     ],
     top_bar: [
       'babel-polyfill',
-      path.resolve("src/javascripts/top_bar/index.js")
-    ]
+      path.resolve('src/javascripts/top_bar/index.js'),
+    ],
   },
 
   output: {
     filename: '[name].js',
-    path: path.resolve(__dirname, "dist/assets")
+    path: path.resolve(__dirname, 'dist/assets'),
   },
 
   module: {
     rules: [
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader"]
+        use: ['style-loader', 'css-loader'],
       },
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: ['babel-loader']
-      }
-    ]
+        use: ['babel-loader'],
+      },
+    ],
   },
 
   resolve: {
     extensions: ['*', '.js', '.jsx'],
     alias: {
-      lib: path.resolve(__dirname, 'src/javascripts/lib')
-    }
+      lib: path.resolve(__dirname, 'src/javascripts/lib'),
+    },
   },
 
   plugins: [
@@ -56,8 +56,8 @@ module.exports = {
         {from: 'src/manifest.json', to: '../[name][ext]'},
         {from: 'src/html/*', to: './[name][ext]'},
         {from: 'src/images/*', to: './[name][ext]'},
-        {from: 'requirements.json', to: '../[name][ext]'}
+        {from: 'requirements.json', to: '../[name][ext]'},
       ],
     }),
-  ]
-};
+  ],
+}
