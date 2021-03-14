@@ -1,5 +1,5 @@
 import {TicketSidebarContainer as TicketSidebar} from './TicketSidebar'
-import {renderWithLocationComponent} from "../lib/renderer";
+import {renderWithLocationComponent} from "lib/renderer";
 
 const entryPoint = 'ticketSidebarEntry'
 

@@ -7,7 +7,11 @@ module.exports = {
   entry: {
     ticket_sidebar: [
       'babel-polyfill',
-      path.resolve(__dirname, "src/javascripts/ticket_sidebar/index.js")
+      path.resolve("src/javascripts/ticket_sidebar/index.js")
+    ],
+    top_bar: [
+      'babel-polyfill',
+      path.resolve("src/javascripts/top_bar/index.js")
     ]
   },
 
