@@ -5,7 +5,10 @@ const path = require("path");
 
 module.exports = {
   entry: {
-    ticket_sidebar: path.resolve(__dirname, "src/javascripts/ticket_sidebar/index.js")
+    ticket_sidebar: [
+      'babel-polyfill',
+      path.resolve(__dirname, "src/javascripts/ticket_sidebar/index.js")
+    ]
   },
 
   output: {
@@ -22,7 +25,7 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: ["babel-loader"]
+        use: ['babel-loader']
       }
     ]
   },
