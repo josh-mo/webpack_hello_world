@@ -2,7 +2,7 @@
   "ticket_fields": {
     "ticket_custom_field": {
       "type": "text",
-      "title": "Sample app ticket field"
+      "title": "Pinned by"
     }
   }
 }
