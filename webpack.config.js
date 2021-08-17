@@ -33,7 +33,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       filename: 'ticket_sidebar.html',
       template: 'src/templates/ticket_sidebar.html',
-      chunks: ['top_bar'],
+      chunks: ['ticket_sidebar'],
     }),
 
     new HtmlWebpackPlugin({

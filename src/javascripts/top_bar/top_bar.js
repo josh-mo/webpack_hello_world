@@ -1,34 +1,31 @@
-import * as React from 'react';
+import React from 'react';
 
-import { useUserId, useFetchPinnedTickets } from './hooks';
+import { useFetchPinnedTickets } from './hooks';
+import { useClientContext } from '../lib/renderer';
 
-/*
- * Container
- **/
-const TopBarContainer = ({ client }) => {
-  const [tickets, setTickets] = React.useState([]);
-  const id = useUserId(client);
+const TopBarContainer = () => {
+  console.log('[**Performance test entry ***] TopBarContainer is rendered with state ');
 
-  useFetchPinnedTickets(client, id, setTickets);
+  const { client } = useClientContext();
+  const tickets = useFetchPinnedTickets();
 
-  const routeToTicket = (client, ticketId) => {
+  const routeToTicket = (ticketId) => {
     console.log('TopBar route to ', ticketId);
     client.invoke('routeTo', 'ticket', ticketId);
   };
 
   return (
-    <div>
+    <>
       {tickets.map((item) => {
-        console.log('TopBar item is ', item);
         return (
           <div key={item.ticketId}>
-            <button type="submit" onClick={() => routeToTicket(client, item.ticketId)}>
+            <button type="submit" onClick={() => routeToTicket(item.ticketId)}>
               {item.ticketId}
             </button>
           </div>
         );
       })}
-    </div>
+    </>
   );
 };
 
